@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="298b2011fdb24d55b32e7385ccbe1fbd" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DistributorOfTasksModel.Department" Width="1.5" PointX="2.375" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistributorOfTasksModel.Role" Width="1.5" PointX="0.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistributorOfTasksModel.Status" Width="1.5" PointX="8.375" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistributorOfTasksModel.TaskForUser" Width="1.5" PointX="6.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistributorOfTasksModel.User" Width="1.5" PointX="4.375" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="DistributorOfTasksModel.FK_User_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="DistributorOfTasksModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="DistributorOfTasksModel.FK_TaskForUser_Status" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DistributorOfTasksModel.FK_TaskForUser_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
