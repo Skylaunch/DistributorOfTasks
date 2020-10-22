@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\maxim\source\repos\DistributorOfTasks\DistributorOfTasks\obj\Debug\
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\
 DistributorOfTasks
 none
 false
 DEBUG;TRACE
-C:\Users\maxim\source\repos\DistributorOfTasks\DistributorOfTasks\App.xaml
-31381341427
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\App.xaml
+5-309993062
 22049316984
-20-1893559920
-18-565209621
-MainWindow.xaml;Windows\StartChiefWindow.xaml;Windows\StartEmployeeWindow.xaml;
+231850479300
+21262001535
+MainWindow.xaml;Pages\Employee\AddReport.xaml;Pages\Employee\TaskListPage.xaml;Windows\StartChiefWindow.xaml;Windows\StartEmployeeWindow.xaml;
 
-False
+True
 

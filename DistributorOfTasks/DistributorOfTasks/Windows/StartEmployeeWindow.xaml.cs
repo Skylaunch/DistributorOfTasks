@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DistributorOfTasks.Pages.Employee;
 
 namespace DistributorOfTasks.Windows
 {
@@ -22,6 +23,13 @@ namespace DistributorOfTasks.Windows
         public StartEmployeeWindow()
         {
             InitializeComponent();
+
+            EmployeeFrame.Navigate(new TaskListPage());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DistributorOfTasks.Classes;
+using DistributorOfTasks.Windows;
 
 namespace DistributorOfTasks
 {
@@ -37,25 +38,32 @@ namespace DistributorOfTasks
                 MessageBox.Show("Must be completed all fields");
                 return;
             }
+
             foreach (User u in UserList)
             {
                 if(u.Login == LoginTextBox.Text && u.Password == Password.Password)
                 {
                     Helper.CurrentUser = u;
-                    MessageBox.Show("Success"); //DELETE THAT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     if(Helper.CurrentUser.Role.Title == "Employee")
                     {
-                        //Employee
+                        GoNext(new StartEmployeeWindow());
                     }
                     else
                     {
-                        //Boss
+                        GoNext(new StartChiefWindow());
                     }
-
                     return;
                 }
             }
+
             MessageBox.Show("This user was not found :(", "Authorization error");
+        }
+
+        private void GoNext(Window nextWindow)
+        {
+            nextWindow.Show();
+            nextWindow.WindowState = WindowState.Maximized;
+            this.Close();
         }
     }
 }

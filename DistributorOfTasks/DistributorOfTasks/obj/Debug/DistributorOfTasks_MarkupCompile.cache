@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\App.xaml
-31381341427
+5-309993062
 22049316984
-20-1893559920
-18-2029068887
-MainWindow.xaml;Windows\StartChiefWindow.xaml;Windows\StartEmployeeWindow.xaml;
+19-1923527224
+21262001535
+MainWindow.xaml;Pages\Employee\AddReport.xaml;Pages\Employee\TaskListPage.xaml;Windows\StartChiefWindow.xaml;Windows\StartEmployeeWindow.xaml;
 
-True
+False
 

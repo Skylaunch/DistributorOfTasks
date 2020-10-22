@@ -4,6 +4,19 @@
              xmlns:local="clr-namespace:DistributorOfTasks"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,10,0,0"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding StatusID}" Value="1">
+                    <Setter Property="Background" Value="Green"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding StatusID}" Value="2">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

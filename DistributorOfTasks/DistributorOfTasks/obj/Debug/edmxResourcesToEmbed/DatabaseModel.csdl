@@ -35,6 +35,9 @@
     <Property Name="StatusID" Type="Int32" />
     <NavigationProperty Name="Status" Relationship="Self.FK_TaskForUser_Status" FromRole="TaskForUser" ToRole="Status" />
     <NavigationProperty Name="User" Relationship="Self.FK_TaskForUser_User" FromRole="TaskForUser" ToRole="User" />
+    <Property Name="CreationTime" Type="DateTime" Precision="3" />
+    <Property Name="PriorityID" Type="Int16" />
+    <NavigationProperty Name="Priority" Relationship="DistributorOfTasksModel.FK_TaskForUser_Priority" FromRole="TaskForUser" ToRole="Priority" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -123,5 +126,30 @@
       <End Role="User" EntitySet="User" />
       <End Role="TaskForUser" EntitySet="TaskForUser" />
     </AssociationSet>
+    <EntitySet Name="Priority" EntityType="DistributorOfTasksModel.Priority" />
+    <AssociationSet Name="FK_TaskForUser_Priority" Association="DistributorOfTasksModel.FK_TaskForUser_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="TaskForUser" EntitySet="TaskForUser" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Priority">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TaskForUser" Relationship="DistributorOfTasksModel.FK_TaskForUser_Priority" FromRole="Priority" ToRole="TaskForUser" />
+  </EntityType>
+  <Association Name="FK_TaskForUser_Priority">
+    <End Type="DistributorOfTasksModel.Priority" Role="Priority" Multiplicity="0..1" />
+    <End Type="DistributorOfTasksModel.TaskForUser" Role="TaskForUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskForUser">
+        <PropertyRef Name="PriorityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

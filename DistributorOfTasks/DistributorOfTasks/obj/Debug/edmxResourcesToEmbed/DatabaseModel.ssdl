@@ -7,6 +7,13 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" MaxLength="20" />
   </EntityType>
+  <EntityType Name="Priority">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="25" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
@@ -30,6 +37,8 @@
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="UserID" Type="int" />
     <Property Name="StatusID" Type="int" />
+    <Property Name="CreationTime" Type="datetime" />
+    <Property Name="PriorityID" Type="smallint" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -45,6 +54,18 @@
     <Property Name="Login" Type="varchar" MaxLength="40" />
     <Property Name="Password" Type="varchar" MaxLength="40" />
   </EntityType>
+  <Association Name="FK_TaskForUser_Priority">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+    <End Role="TaskForUser" Type="Self.TaskForUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskForUser">
+        <PropertyRef Name="PriorityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TaskForUser_Status">
     <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
     <End Role="TaskForUser" Type="Self.TaskForUser" Multiplicity="*" />
@@ -95,10 +116,15 @@
   </Association>
   <EntityContainer Name="Хранилище DistributorOfTasksModelContainer">
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Priority" EntityType="Self.Priority" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaskForUser" EntityType="Self.TaskForUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TaskForUser_Priority" Association="Self.FK_TaskForUser_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="TaskForUser" EntitySet="TaskForUser" />
+    </AssociationSet>
     <AssociationSet Name="FK_TaskForUser_Status" Association="Self.FK_TaskForUser_Status">
       <End Role="Status" EntitySet="Status" />
       <End Role="TaskForUser" EntitySet="TaskForUser" />
