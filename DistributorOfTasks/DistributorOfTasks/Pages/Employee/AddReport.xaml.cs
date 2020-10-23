@@ -15,7 +15,8 @@ using System.Windows.Shapes;
 using System.Threading.Tasks;
 
 using Word = Microsoft.Office.Interop.Word;
-using System.Windows.Threading;
+using Microsoft.Win32;
+using System.IO;
 
 namespace DistributorOfTasks.Pages.Employee
 {
@@ -25,8 +26,9 @@ namespace DistributorOfTasks.Pages.Employee
     public partial class AddReport : System.Windows.Controls.Page
     {
         private TaskForUser CurrentTask { get; set; }
+
         private Word.Application app = new Word.Application();
-        private string reportText;
+        private string reportDir = Environment.CurrentDirectory + @"\..\..\Reports\";
 
         public AddReport(TaskForUser task)
         {
@@ -34,20 +36,15 @@ namespace DistributorOfTasks.Pages.Employee
             CurrentTask = task;
         }
 
-        private async void CreateReportButton_Click(object sender, RoutedEventArgs e)
+        private void CreateReportButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                reportText = ReportTextBlock.Text;
-
-                await System.Threading.Tasks.Task.Run(() =>
-                {
-                    string reportDir = Environment.CurrentDirectory + @"\..\..\Reports\";
-                    Document doc = GetDoc(reportDir + "Template.docx");
-                    doc.SaveAs(reportDir + $"Task №{CurrentTask.Id}.docx");
-                    doc.Close();
-                    MessageBox.Show("Report was added");
-                });
+                Document doc = GetDoc(reportDir + "Template.docx");
+                doc.SaveAs(reportDir + $"Task №{CurrentTask.Id}.docx");
+                doc.Close();
+                MessageBox.Show("Report was added");
+                NavigationService.Navigate(new TaskListPage());
             }
             catch (System.Exception ex)
             {
@@ -61,23 +58,38 @@ namespace DistributorOfTasks.Pages.Employee
             SetTemplate(newDoc);
             return newDoc;
         }
-            
+
         private void SetTemplate(Document newDoc)
         {
-            foreach (Bookmark b in newDoc.Bookmarks)
-            {
-                b.Range.Bold = 20;
-            }
             newDoc.Bookmarks["taskTitle"].Range.Text = CurrentTask.Title;
             newDoc.Bookmarks["status"].Range.Text = CurrentTask.StatusID == 2 ? "Fail" : "Success";
             newDoc.Bookmarks["description"].Range.Text = CurrentTask.Description;
             newDoc.Bookmarks["user"].Range.Text = $"{CurrentTask.User.Surname} {CurrentTask.User.Name}";
-            newDoc.Bookmarks["report"].Range.Text = reportText;
+            newDoc.Bookmarks["report"].Range.Text = ReportTextBlock.Text;
         }
 
-        private void DownloadReportButton_Click(object sender, RoutedEventArgs e)
+        private void UploadReportButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("In the development");
+            try
+            {
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Filter = "Document files (*.docx;*.txt;*.doc)|*.docx;*.txt;*.doc";
+
+                if (fileDialog.ShowDialog() == true)
+                {
+                    Document doc = app.Documents.Add(fileDialog.FileName);
+                    doc.SaveAs(reportDir + $"Task №{CurrentTask.Id}.docx");
+                    doc.Close();
+                    MessageBox.Show("Success");
+                    NavigationService.Navigate(new TaskListPage());
+                }
+                else
+                    MessageBox.Show("The report was not added, please write it in the program or try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -23,6 +23,6 @@
         <Label Grid.Row="0" Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Center" Content="Write your report here" FontSize="30" FontFamily="Times New Roman"/>
         <TextBox Name="ReportTextBlock" Grid.Row="1" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="10,0,10,0"/>
         <Button Name="CreateReportButton" Grid.Row="2" Content="Create Report" Height="45" Margin="10,0,30,0" Click="CreateReportButton_Click"/>
-        <Button Name="DownloadReportButton" Grid.Row="2" Grid.Column="1" Content="Download Report" Height="45" Margin="30,0,10,0" Click="DownloadReportButton_Click"/>
+        <Button Name="UploadReportButton" Grid.Row="2" Grid.Column="1" Content="Upload Report" Height="45" Margin="30,0,10,0" Click="UploadReportButton_Click"/>
     </Grid>
 </Page>
