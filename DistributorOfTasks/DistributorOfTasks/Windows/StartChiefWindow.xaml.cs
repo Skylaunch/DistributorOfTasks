@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DistributorOfTasks.Pages.Chief;
 
 namespace DistributorOfTasks.Windows
 {
@@ -22,6 +23,18 @@ namespace DistributorOfTasks.Windows
         public StartChiefWindow()
         {
             InitializeComponent();
+
+            ChiefFrame.Navigate(new TasksOfMyEmployeesPage());
+        }
+
+        private void CheckingButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChiefFrame.Navigate(new TasksOfMyEmployeesPage());
+        }
+
+        private void CreateTaskForUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChiefFrame.Navigate(new CreateTaskForUserPage());
         }
     }
 }

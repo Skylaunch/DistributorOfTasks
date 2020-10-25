@@ -19,7 +19,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Priority" Binding="{Binding Priority.Title}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Creation time" Binding="{Binding CreationTime, StringFormat={}{0:hh:mm:ss | dd MMMM}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Deadline" Binding="{Binding Deadline, StringFormat={}{0:dd MMMM}}"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Action buttons">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

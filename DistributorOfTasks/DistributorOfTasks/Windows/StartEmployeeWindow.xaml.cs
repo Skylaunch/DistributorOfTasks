@@ -27,7 +27,7 @@ namespace DistributorOfTasks.Windows
             EmployeeFrame.Navigate(new TaskListPage());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MyTasksButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

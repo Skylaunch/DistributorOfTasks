@@ -19,8 +19,8 @@ namespace DistributorOfTasks
         public string Description { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> StatusID { get; set; }
-        public Nullable<System.DateTime> CreationTime { get; set; }
         public Nullable<short> PriorityID { get; set; }
+        public Nullable<System.DateTime> Deadline { get; set; }
     
         public virtual Status Status { get; set; }
         public virtual User User { get; set; }

@@ -37,7 +37,7 @@
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="UserID" Type="int" />
     <Property Name="StatusID" Type="int" />
-    <Property Name="CreationTime" Type="datetime" />
+    <Property Name="Deadline" Type="datetime" />
     <Property Name="PriorityID" Type="smallint" />
   </EntityType>
   <EntityType Name="User">

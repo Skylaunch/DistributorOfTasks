@@ -6,6 +6,23 @@
         xmlns:local="clr-namespace:DistributorOfTasks.Windows"
         mc:Ignorable="d" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Column="1" Fill="WhiteSmoke"/>
+        <Rectangle Grid.Row="1" Fill="WhiteSmoke"/>
+        <StackPanel Grid.Row="1">
+            <Button Name="CheckingButton" Content="Check your employees" Click="CheckingButton_Click"/>
+            <Button Name="CreateTaskForUserButton" Content="Create a new task for an employee" Margin="0,10,0.4,0" Click="CreateTaskForUserButton_Click"/>
+            <Button Name="CreatePublicTaskButton" Content="Create a new public task"/>
+        </StackPanel>
+        <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1" Name="ChiefFrame"/>
         
     </Grid>
 </Window>

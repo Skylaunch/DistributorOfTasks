@@ -42,7 +42,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
           <Property Name="UserID" Type="int" />
           <Property Name="StatusID" Type="int" />
-          <Property Name="CreationTime" Type="datetime" />
+          <Property Name="Deadline" Type="datetime" />
           <Property Name="PriorityID" Type="smallint" />
         </EntityType>
         <EntityType Name="User">
@@ -186,9 +186,9 @@
           <Property Name="StatusID" Type="Int32" />
           <NavigationProperty Name="Status" Relationship="Self.FK_TaskForUser_Status" FromRole="TaskForUser" ToRole="Status" />
           <NavigationProperty Name="User" Relationship="Self.FK_TaskForUser_User" FromRole="TaskForUser" ToRole="User" />
-          <Property Name="CreationTime" Type="DateTime" Precision="3" />
           <Property Name="PriorityID" Type="Int16" />
           <NavigationProperty Name="Priority" Relationship="DistributorOfTasksModel.FK_TaskForUser_Priority" FromRole="TaskForUser" ToRole="Priority" />
+          <Property Name="Deadline" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -336,8 +336,8 @@
           <EntitySetMapping Name="TaskForUser">
             <EntityTypeMapping TypeName="DistributorOfTasksModel.TaskForUser">
               <MappingFragment StoreEntitySet="TaskForUser">
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
                 <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
-                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

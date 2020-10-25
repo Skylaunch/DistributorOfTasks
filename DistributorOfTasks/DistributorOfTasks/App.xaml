@@ -18,5 +18,9 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="0,0,15,0"/>
+        </Style>
     </Application.Resources>
 </Application>

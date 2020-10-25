@@ -1,0 +1,37 @@
+﻿<Page x:Class="DistributorOfTasks.Pages.Chief.CreateTaskForUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DistributorOfTasks.Pages.Chief"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreateTaskForUserPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,50">
+                <Label Content="Title: " FontSize="18" Margin="0,0, 62, 0"/>
+                <TextBox Name="TitleTextBox" MinWidth="150" Width="Auto" MaxWidth="230" FontSize="15"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,50">
+                <Label Content="Description: " FontSize="18"/>
+                <TextBox Name="DescriptionTextBox" TextWrapping="Wrap" Width="230" Height="300" FontSize="15"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <ComboBox Name="UserComboBox" SelectedIndex="0" Height="30" VerticalAlignment="Top" FontSize="17"/>
+            <ComboBox Name="PriorityComboBox" SelectedIndex="0" Height="30" VerticalAlignment="Top" FontSize="17"/>
+            <DatePicker  Name="DeadlineDatePicker" Width="200" Height="30" VerticalAlignment="Top"/>
+        </StackPanel>
+
+        <Button Grid.Column="1" Name="SaveButton" Content="Create task" Height="100" Width="200" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,50,50" Click="SaveButton_Click"/>
+    </Grid>
+</Page>

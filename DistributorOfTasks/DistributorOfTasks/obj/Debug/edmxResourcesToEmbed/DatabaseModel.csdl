@@ -35,9 +35,9 @@
     <Property Name="StatusID" Type="Int32" />
     <NavigationProperty Name="Status" Relationship="Self.FK_TaskForUser_Status" FromRole="TaskForUser" ToRole="Status" />
     <NavigationProperty Name="User" Relationship="Self.FK_TaskForUser_User" FromRole="TaskForUser" ToRole="User" />
-    <Property Name="CreationTime" Type="DateTime" Precision="3" />
     <Property Name="PriorityID" Type="Int16" />
     <NavigationProperty Name="Priority" Relationship="DistributorOfTasksModel.FK_TaskForUser_Priority" FromRole="TaskForUser" ToRole="Priority" />
+    <Property Name="Deadline" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="User">
     <Key>

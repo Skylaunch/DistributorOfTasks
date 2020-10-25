@@ -28,8 +28,8 @@
     <EntitySetMapping Name="TaskForUser">
       <EntityTypeMapping TypeName="DistributorOfTasksModel.TaskForUser">
         <MappingFragment StoreEntitySet="TaskForUser">
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
           <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
-          <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />

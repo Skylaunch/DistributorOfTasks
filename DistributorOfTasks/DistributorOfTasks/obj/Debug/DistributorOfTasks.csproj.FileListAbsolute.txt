@@ -52,3 +52,7 @@ C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\Distributo
 C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Employee\AddReport.g.cs
 C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Employee\AddReport.baml
 C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\DistributorOfTasks.csproj.ResolveComReference.cache
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\TasksOfMyEmployeesPage.g.cs
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\TasksOfMyEmployeesPage.baml
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\CreateTaskForUserPage.g.cs
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\CreateTaskForUserPage.baml
