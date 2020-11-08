@@ -73,6 +73,9 @@
     <Compile Include="Department.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Chief\CreatePublicTaskPage.xaml.cs">
+      <DependentUpon>CreatePublicTaskPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Chief\CreateTaskForUserPage.xaml.cs">
       <DependentUpon>CreateTaskForUserPage.xaml</DependentUpon>
     </Compile>
@@ -82,10 +85,16 @@
     <Compile Include="Pages\Employee\AddReport.xaml.cs">
       <DependentUpon>AddReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Employee\PublicTaskListPage.xaml.cs">
+      <DependentUpon>PublicTaskListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Employee\TaskListPage.xaml.cs">
       <DependentUpon>TaskListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Priority.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PublicTask.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
@@ -128,6 +137,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Chief\CreatePublicTaskPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Chief\CreateTaskForUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Employee\AddReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Employee\PublicTaskListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

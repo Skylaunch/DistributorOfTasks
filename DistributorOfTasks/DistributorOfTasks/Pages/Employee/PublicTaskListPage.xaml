@@ -1,0 +1,34 @@
+﻿<Page x:Class="DistributorOfTasks.Pages.Employee.PublicTaskListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DistributorOfTasks.Pages.Employee"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PublicTaskListPage">
+
+    <Grid Background="White">
+        <DataGrid Name="PublicTaskListDataGrid" CanUserAddRows="False" SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding PublicTaskList}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="TitleHeader" Header="Title" Binding="{Binding Title}"/>
+                <DataGridTemplateColumn Header="Description">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" MaxWidth="650"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Priority" Binding="{Binding Priority.Title}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Deadline" Binding="{Binding Deadline, StringFormat={}{0:dd MMMM}}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Action buttons">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="SuccessButton" Content="Get it" Margin="2,2,5,2" Height="30" Click="GetButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

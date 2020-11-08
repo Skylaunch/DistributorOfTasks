@@ -22,7 +22,7 @@
         <Rectangle Grid.Row="1" Fill="WhiteSmoke"/>
         <StackPanel Grid.Row="1">
             <Button  Content="Tasks" Click="MyTasksButton_Click"/>
-            <Button  Content="Pool of tasks"/>
+            <Button  Name="PoolButton"  Content="Pool of tasks" Click="PoolButton_Click"/>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1" Name="EmployeeFrame"/>
         

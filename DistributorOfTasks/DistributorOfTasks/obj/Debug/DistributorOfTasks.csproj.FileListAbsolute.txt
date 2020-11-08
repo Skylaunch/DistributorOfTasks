@@ -56,3 +56,7 @@ C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\Distributo
 C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\TasksOfMyEmployeesPage.baml
 C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\CreateTaskForUserPage.g.cs
 C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\CreateTaskForUserPage.baml
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Employee\PublicTaskListPage.g.cs
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Employee\PublicTaskListPage.baml
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\CreatePublicTaskPage.g.cs
+C:\Users\maxim\Documents\GitHub\DistributorOfTasks\DistributorOfTasks\DistributorOfTasks\obj\Debug\Pages\Chief\CreatePublicTaskPage.baml

@@ -20,6 +20,8 @@ namespace DistributorOfTasks.Windows
     /// </summary>
     public partial class StartChiefWindow : Window
     {
+        //TODO: Create dependency  of the label on the form you are on
+
         public StartChiefWindow()
         {
             InitializeComponent();
@@ -35,6 +37,12 @@ namespace DistributorOfTasks.Windows
         private void CreateTaskForUserButton_Click(object sender, RoutedEventArgs e)
         {
             ChiefFrame.Navigate(new CreateTaskForUserPage());
+        }
+
+        private void CreatePublicTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            ChiefFrame.Navigate(new CreatePublicTaskPage());
         }
     }
 }

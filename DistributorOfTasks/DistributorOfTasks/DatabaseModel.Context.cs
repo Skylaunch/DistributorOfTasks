@@ -31,5 +31,6 @@ namespace DistributorOfTasks
         public virtual DbSet<TaskForUser> TaskForUser { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Priority> Priority { get; set; }
+        public virtual DbSet<PublicTask> PublicTask { get; set; }
     }
 }

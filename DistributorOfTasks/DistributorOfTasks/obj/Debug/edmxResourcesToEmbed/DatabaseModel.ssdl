@@ -14,6 +14,17 @@
     <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" MaxLength="25" />
   </EntityType>
+  <EntityType Name="PublicTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="Deadline" Type="date" />
+    <Property Name="PriorityID" Type="smallint" />
+    <Property Name="DepartmentID" Type="int" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
@@ -54,6 +65,30 @@
     <Property Name="Login" Type="varchar" MaxLength="40" />
     <Property Name="Password" Type="varchar" MaxLength="40" />
   </EntityType>
+  <Association Name="FK_PublicTask_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="PublicTask" Type="Self.PublicTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PublicTask">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicTask_Priority">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+    <End Role="PublicTask" Type="Self.PublicTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PublicTask">
+        <PropertyRef Name="PriorityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TaskForUser_Priority">
     <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
     <End Role="TaskForUser" Type="Self.TaskForUser" Multiplicity="*" />
@@ -117,10 +152,19 @@
   <EntityContainer Name="Хранилище DistributorOfTasksModelContainer">
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Priority" EntityType="Self.Priority" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PublicTask" EntityType="Self.PublicTask" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaskForUser" EntityType="Self.TaskForUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PublicTask_Department" Association="Self.FK_PublicTask_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="PublicTask" EntitySet="PublicTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicTask_Priority" Association="Self.FK_PublicTask_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="PublicTask" EntitySet="PublicTask" />
+    </AssociationSet>
     <AssociationSet Name="FK_TaskForUser_Priority" Association="Self.FK_TaskForUser_Priority">
       <End Role="Priority" EntitySet="Priority" />
       <End Role="TaskForUser" EntitySet="TaskForUser" />

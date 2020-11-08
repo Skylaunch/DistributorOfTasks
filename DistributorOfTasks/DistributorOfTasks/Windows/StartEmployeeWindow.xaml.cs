@@ -29,7 +29,12 @@ namespace DistributorOfTasks.Windows
 
         private void MyTasksButton_Click(object sender, RoutedEventArgs e)
         {
+            EmployeeFrame.Navigate(new TaskListPage());
+        }
 
+        private void PoolButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeFrame.Navigate(new PublicTaskListPage());
         }
     }
 }

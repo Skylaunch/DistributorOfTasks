@@ -19,10 +19,9 @@
         <Rectangle Grid.Row="1" Fill="WhiteSmoke"/>
         <StackPanel Grid.Row="1">
             <Button Name="CheckingButton" Content="Check your employees" Click="CheckingButton_Click"/>
-            <Button Name="CreateTaskForUserButton" Content="Create a new task for an employee" Margin="0,10,0.4,0" Click="CreateTaskForUserButton_Click"/>
-            <Button Name="CreatePublicTaskButton" Content="Create a new public task"/>
+            <Button Name="CreateTaskForUserButton" Content="Create a new task for an employee" Click="CreateTaskForUserButton_Click"/>
+            <Button Name="CreatePublicTaskButton" Content="Create a new public task" Click="CreatePublicTaskButton_Click"/>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1" Name="ChiefFrame"/>
-        
     </Grid>
 </Window>

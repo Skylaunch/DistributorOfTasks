@@ -19,6 +19,17 @@
           <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="25" />
         </EntityType>
+        <EntityType Name="PublicTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="30" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Deadline" Type="date" />
+          <Property Name="PriorityID" Type="smallint" />
+          <Property Name="DepartmentID" Type="int" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
@@ -59,6 +70,30 @@
           <Property Name="Login" Type="varchar" MaxLength="40" />
           <Property Name="Password" Type="varchar" MaxLength="40" />
         </EntityType>
+        <Association Name="FK_PublicTask_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="PublicTask" Type="Self.PublicTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PublicTask">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublicTask_Priority">
+          <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+          <End Role="PublicTask" Type="Self.PublicTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priority">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PublicTask">
+              <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TaskForUser_Priority">
           <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
           <End Role="TaskForUser" Type="Self.TaskForUser" Multiplicity="*" />
@@ -122,10 +157,19 @@
         <EntityContainer Name="Хранилище DistributorOfTasksModelContainer">
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Priority" EntityType="Self.Priority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublicTask" EntityType="Self.PublicTask" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaskForUser" EntityType="Self.TaskForUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PublicTask_Department" Association="Self.FK_PublicTask_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="PublicTask" EntitySet="PublicTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublicTask_Priority" Association="Self.FK_PublicTask_Priority">
+            <End Role="Priority" EntitySet="Priority" />
+            <End Role="PublicTask" EntitySet="PublicTask" />
+          </AssociationSet>
           <AssociationSet Name="FK_TaskForUser_Priority" Association="Self.FK_TaskForUser_Priority">
             <End Role="Priority" EntitySet="Priority" />
             <End Role="TaskForUser" EntitySet="TaskForUser" />
@@ -158,6 +202,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Department" FromRole="Department" ToRole="User" />
+          <NavigationProperty Name="PublicTask" Relationship="DistributorOfTasksModel.FK_PublicTask_Department" FromRole="Department" ToRole="PublicTask" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -282,7 +327,16 @@
             <End Role="Priority" EntitySet="Priority" />
             <End Role="TaskForUser" EntitySet="TaskForUser" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="PublicTask" EntityType="DistributorOfTasksModel.PublicTask" />
+          <AssociationSet Name="FK_PublicTask_Department" Association="DistributorOfTasksModel.FK_PublicTask_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="PublicTask" EntitySet="PublicTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublicTask_Priority" Association="DistributorOfTasksModel.FK_PublicTask_Priority">
+            <End Role="Priority" EntitySet="Priority" />
+            <End Role="PublicTask" EntitySet="PublicTask" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Priority">
           <Key>
             <PropertyRef Name="Id" />
@@ -290,6 +344,7 @@
           <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TaskForUser" Relationship="DistributorOfTasksModel.FK_TaskForUser_Priority" FromRole="Priority" ToRole="TaskForUser" />
+          <NavigationProperty Name="PublicTask" Relationship="DistributorOfTasksModel.FK_PublicTask_Priority" FromRole="Priority" ToRole="PublicTask" />
         </EntityType>
         <Association Name="FK_TaskForUser_Priority">
           <End Type="DistributorOfTasksModel.Priority" Role="Priority" Multiplicity="0..1" />
@@ -303,7 +358,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="PublicTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Deadline" Type="DateTime" Precision="0" />
+          <Property Name="PriorityID" Type="Int16" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="DistributorOfTasksModel.FK_PublicTask_Department" FromRole="PublicTask" ToRole="Department" />
+          <NavigationProperty Name="Priority" Relationship="DistributorOfTasksModel.FK_PublicTask_Priority" FromRole="PublicTask" ToRole="Priority" />
+        </EntityType>
+        <Association Name="FK_PublicTask_Department">
+          <End Type="DistributorOfTasksModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="DistributorOfTasksModel.PublicTask" Role="PublicTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PublicTask">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublicTask_Priority">
+          <End Type="DistributorOfTasksModel.Priority" Role="Priority" Multiplicity="0..1" />
+          <End Type="DistributorOfTasksModel.PublicTask" Role="PublicTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priority">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PublicTask">
+              <PropertyRef Name="PriorityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -364,6 +456,18 @@
           <EntitySetMapping Name="Priority">
             <EntityTypeMapping TypeName="DistributorOfTasksModel.Priority">
               <MappingFragment StoreEntitySet="Priority">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublicTask">
+            <EntityTypeMapping TypeName="DistributorOfTasksModel.PublicTask">
+              <MappingFragment StoreEntitySet="PublicTask">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="PriorityID" ColumnName="PriorityID" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

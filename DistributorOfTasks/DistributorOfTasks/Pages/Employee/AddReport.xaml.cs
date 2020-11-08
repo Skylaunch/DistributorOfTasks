@@ -72,8 +72,10 @@ namespace DistributorOfTasks.Pages.Employee
         {
             try
             {
-                OpenFileDialog fileDialog = new OpenFileDialog();
-                fileDialog.Filter = "Document files (*.docx;*.txt;*.doc)|*.docx;*.txt;*.doc";
+                OpenFileDialog fileDialog = new OpenFileDialog
+                {
+                    Filter = "Document files (*.docx;*.txt;*.doc)|*.docx;*.txt;*.doc"
+                };
 
                 if (fileDialog.ShowDialog() == true)
                 {

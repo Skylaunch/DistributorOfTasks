@@ -18,6 +18,7 @@ namespace DistributorOfTasks
         public Department()
         {
             this.User = new HashSet<User>();
+            this.PublicTask = new HashSet<PublicTask>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace DistributorOfTasks
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PublicTask> PublicTask { get; set; }
     }
 }

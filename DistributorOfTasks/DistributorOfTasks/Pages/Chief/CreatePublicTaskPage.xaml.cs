@@ -12,25 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using DistributorOfTasks.Classes;
 
 namespace DistributorOfTasks.Pages.Chief
 {
     /// <summary>
-    /// Логика взаимодействия для CreateTaskForUserPage.xaml
+    /// Логика взаимодействия для CreatePublicTaskPage.xaml
     /// </summary>
-    public partial class CreateTaskForUserPage : Page
+    public partial class CreatePublicTaskPage : Page
     {
-        private List<string> UsersList { get; set; } = Helper.Connection.User.
-            Where(u => u.Department.Id == Helper.CurrentUser.Department.Id).Select(u => "№"+ u.Id +" "+ u.Surname +" " + u.Name).ToList();
-
         private List<string> PriorityList { get; set; } = Helper.Connection.Priority.Select(p => p.Title).ToList();
+        private List<string> DepartamentList { get; set; } = Helper.Connection.Department.Select(p => p.Title).ToList();
 
-        public CreateTaskForUserPage()
+        public CreatePublicTaskPage()
         {
             InitializeComponent();
             PriorityComboBox.ItemsSource = PriorityList;
-            UserComboBox.ItemsSource = UsersList;
+            DepartmentComboBox.ItemsSource = DepartamentList;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -47,29 +46,22 @@ namespace DistributorOfTasks.Pages.Chief
                     MessageBox.Show("Deadline can't be earlier than today");
                     return;
                 }
-                TaskForUser newTask = new TaskForUser
+                PublicTask newTask = new PublicTask
                 {
                     Title = TitleTextBox.Text,
                     Description = DescriptionTextBox.Text,
                     Deadline = DeadlineDatePicker.DisplayDate,
                     PriorityID = Helper.Connection.Priority.Where(p => p.Title == PriorityComboBox.SelectedValue.ToString()).First().Id,
-                    StatusID = Helper.Connection.Status.Where(s => s.Title == "In process").First().Id
+                    DepartmentID = Helper.Connection.Department.Where(d => d.Title == DepartmentComboBox.SelectedValue.ToString()).First().Id
                 };
 
-                //Search correct User
-                string selectedUser = UserComboBox.SelectedItem as string;
-                selectedUser = selectedUser.Remove(selectedUser.IndexOf(" "));
-                selectedUser = selectedUser.Remove(0, 1);
-                int correctUserId = Convert.ToInt32(selectedUser);
-                newTask.UserID = correctUserId;
-
-                Helper.Connection.TaskForUser.Add(newTask);
+                Helper.Connection.PublicTask.Add(newTask);
                 Helper.Connection.SaveChanges();
 
                 MessageBox.Show("Success");
                 RefreshFields();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -81,7 +73,7 @@ namespace DistributorOfTasks.Pages.Chief
             DescriptionTextBox.Text = "";
             DeadlineDatePicker.Text = "";
             PriorityComboBox.SelectedIndex = 0;
-            UserComboBox.SelectedIndex = 0;
+            DepartmentComboBox.SelectedIndex = 0;
         }
     }
 }

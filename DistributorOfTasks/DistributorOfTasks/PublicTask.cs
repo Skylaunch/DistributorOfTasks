@@ -12,21 +12,16 @@ namespace DistributorOfTasks
     using System;
     using System.Collections.Generic;
     
-    public partial class Priority
+    public partial class PublicTask
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Priority()
-        {
-            this.TaskForUser = new HashSet<TaskForUser>();
-            this.PublicTask = new HashSet<PublicTask>();
-        }
-    
-        public short Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> Deadline { get; set; }
+        public Nullable<short> PriorityID { get; set; }
+        public Nullable<int> DepartmentID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaskForUser> TaskForUser { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PublicTask> PublicTask { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual Priority Priority { get; set; }
     }
 }
